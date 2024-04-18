@@ -38,33 +38,26 @@ const rules: KarabinerRules[] = [
         ],
         type: "basic",
       },
-      //      {
-      //        type: "basic",
-      //        description: "Disable CMD + Tab to force Hyper Key usage",
-      //        from: {
-      //          key_code: "tab",
-      //          modifiers: {
-      //            mandatory: ["left_command"],
-      //          },
-      //        },
-      //        to: [
-      //          {
-      //            key_code: "tab",
-      //          },
-      //        ],
-      //      },
+      {
+        type: "basic",
+        description: "Disable CMD + Tab to force Hyper Key usage",
+        from: {
+          key_code: "tab",
+          modifiers: {
+            mandatory: ["left_command"],
+          },
+        },
+        to: [
+          {
+            key_code: "tab",
+          },
+        ],
+      },
     ],
   },
   ...createHyperSubLayers({
-    // spacebar: open(
-    //   "raycast://extensions/stellate/mxstbr-commands/create-notion-todo"
-    // ),
-    // b = "B"rowse
-    b: {
-      n: open("https://github.com/notifications?query=is%3Aunread"),
-    },
-    // o = "Open" applications
-    o: {
+    // "a"pps
+    a: {
       b: app("Brave Browser"),
       c: app("Google Calendar"),
       e: app("Visual Studio Code"),
@@ -76,58 +69,52 @@ const rules: KarabinerRules[] = [
       p: app("Spotify"),
       m: app("Gmail"),
     },
-
-    // w = "Window" via rectangle.app
+    // w = "Window"
     w: {
       y: rectangle("previous-display"),
       o: rectangle("next-display"),
-      k: rectangle("top-half"),
-      j: rectangle("bottom-half"),
-      h: rectangle("left-half"),
-      l: rectangle("right-half"),
-      f: rectangle("maximize"),
-      u: {
+      m: rectangle("maximize"),
+      h: {
         description: "Window: Previous Tab",
         to: [
           {
-            key_code: "tab",
-            modifiers: ["right_control", "right_shift"],
+            key_code: "left_arrow",
+            modifiers: ["right_option", "right_command"],
+          },
+        ],
+      },
+      l: {
+        description: "Window: Next Tab",
+        to: [
+          {
+            key_code: "right_arrow",
+            modifiers: ["right_option", "right_command"],
+          },
+        ],
+      },
+      u: {
+        description: "Window: Back",
+        to: [
+          {
+            key_code: "left_arrow",
+            modifiers: ["right_command"],
           },
         ],
       },
       i: {
-        description: "Window: Next Tab",
+        description: "Window: Forward",
         to: [
           {
-            key_code: "tab",
-            modifiers: ["right_control"],
+            key_code: "right_arrow",
+            modifiers: ["right_command"],
           },
         ],
       },
       n: {
-        description: "Window: Next Window",
+        description: "Window: Next Window Same App",
         to: [
           {
             key_code: "grave_accent_and_tilde",
-            modifiers: ["right_command"],
-          },
-        ],
-      },
-      b: {
-        description: "Window: Back",
-        to: [
-          {
-            key_code: "open_bracket",
-            modifiers: ["right_command"],
-          },
-        ],
-      },
-      // Note: No literal connection. Both f and n are already taken.
-      m: {
-        description: "Window: Forward",
-        to: [
-          {
-            key_code: "close_bracket",
             modifiers: ["right_command"],
           },
         ],
@@ -141,21 +128,6 @@ const rules: KarabinerRules[] = [
           },
         ],
       },
-    },
-
-    // s = "System"
-    s: {
-      e: {
-        to: [
-          {
-            // Emoji picker
-            key_code: "spacebar",
-            modifiers: ["right_control", "right_command"],
-          },
-        ],
-      },
-      // "D"o not disturb toggle
-      d: open(`raycast://extensions/yakitrak/do-not-disturb/toggle`),
     },
 
     // v = "moVe" which isn't "m" because we want it to be on the left hand
@@ -174,9 +146,6 @@ const rules: KarabinerRules[] = [
         to: [{ key_code: "right_arrow" }],
       },
     },
-
-    // c = Musi*c* which isn't "m" because we want it to be on the left hand
-    c: {},
 
     // r = "Raycast"
     r: {
