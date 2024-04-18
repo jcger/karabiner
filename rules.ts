@@ -79,15 +79,6 @@ const rules: KarabinerRules[] = [
 
     // w = "Window" via rectangle.app
     w: {
-      semicolon: {
-        description: "Window: Hide",
-        to: [
-          {
-            key_code: "h",
-            modifiers: ["right_command"],
-          },
-        ],
-      },
       y: rectangle("previous-display"),
       o: rectangle("next-display"),
       k: rectangle("top-half"),
