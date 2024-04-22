@@ -57,17 +57,17 @@ const rules: KarabinerRules[] = [
   },
   ...createHyperSubLayers({
     // "a"pps
-    a: {
+    o: {
       b: app("Brave Browser"),
-      c: app("Google Calendar"),
+      // c: app("Google Calendar"),
       e: app("Visual Studio Code"),
-      s: app("Slack"),
+      // s: app("Slack"),
       n: app("Notion"),
       t: app("iTerm"),
       z: app("zoom.us"),
       f: app("Finder"),
       p: app("Spotify"),
-      m: app("Gmail"),
+      // m: app("Gmail"),
     },
     // w = "Window"
     w: {
@@ -88,6 +88,24 @@ const rules: KarabinerRules[] = [
         to: [
           {
             key_code: "right_arrow",
+            modifiers: ["right_option", "right_command"],
+          },
+        ],
+      },
+      j: {
+        description: "Window: Down Tab",
+        to: [
+          {
+            key_code: "down_arrow",
+            modifiers: ["right_option", "right_command"],
+          },
+        ],
+      },
+      k: {
+        description: "Window: Up Tab",
+        to: [
+          {
+            key_code: "up_arrow",
             modifiers: ["right_option", "right_command"],
           },
         ],
