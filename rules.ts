@@ -55,11 +55,58 @@ const rules: KarabinerRules[] = [
       },
     ],
   },
+  {
+    description: "Cmd + Tab once with Hyper + j",
+    manipulators: [
+      {
+        conditions: [
+          {
+            name: "hyper_sublayer_o",
+            type: "variable_if",
+            value: 0,
+          },
+          {
+            name: "hyper_sublayer_w",
+            type: "variable_if",
+            value: 0,
+          },
+          {
+            name: "hyper_sublayer_r",
+            type: "variable_if",
+            value: 0,
+          },
+          {
+            name: "hyper",
+            type: "variable_if",
+            value: 1,
+          },
+        ],
+        from: {
+          key_code: "j",
+        },
+        to: [
+          {
+            key_code: "tab",
+            modifiers: ["left_command"],
+          },
+        ],
+        to_after_key_up: [
+          {
+            set_variable: {
+              name: "hyper",
+              value: 0
+            }
+          }
+        ],
+        type: "basic",
+      },
+    ],
+  },
   ...createHyperSubLayers({
     // "a"pps
     o: {
       b: app("Brave Browser"),
-      // c: app("Google Calendar"),
+      c: app("Google Calendar"),
       e: app("Visual Studio Code"),
       // s: app("Slack"),
       n: app("Notion"),
@@ -67,7 +114,7 @@ const rules: KarabinerRules[] = [
       z: app("zoom.us"),
       f: app("Finder"),
       p: app("Spotify"),
-      // m: app("Gmail"),
+      m: app("Gmail"),
     },
     // w = "Window"
     w: {
