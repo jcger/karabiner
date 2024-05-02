@@ -55,71 +55,73 @@ const rules: KarabinerRules[] = [
       },
     ],
   },
-  {
-    description: "Cmd + Tab once with Hyper + j",
-    manipulators: [
-      {
-        conditions: [
-          {
-            name: "hyper_sublayer_o",
-            type: "variable_if",
-            value: 0,
-          },
-          {
-            name: "hyper_sublayer_w",
-            type: "variable_if",
-            value: 0,
-          },
-          {
-            name: "hyper_sublayer_r",
-            type: "variable_if",
-            value: 0,
-          },
-          {
-            name: "hyper",
-            type: "variable_if",
-            value: 1,
-          },
-        ],
-        from: {
-          key_code: "j",
-        },
-        to: [
-          {
-            key_code: "tab",
-            modifiers: ["left_command"],
-          },
-        ],
-        to_after_key_up: [
-          {
-            set_variable: {
-              name: "hyper",
-              value: 0
-            }
-          }
-        ],
-        type: "basic",
-      },
-    ],
-  },
+  // {
+  //   description: "Cmd + Tab once with Hyper + j",
+  //   manipulators: [
+  //     {
+  //       conditions: [
+  //         {
+  //           name: "hyper_sublayer_o",
+  //           type: "variable_if",
+  //           value: 0,
+  //         },
+  //         {
+  //           name: "hyper_sublayer_w",
+  //           type: "variable_if",
+  //           value: 0,
+  //         },
+  //         {
+  //           name: "hyper_sublayer_r",
+  //           type: "variable_if",
+  //           value: 0,
+  //         },
+  //         {
+  //           name: "hyper",
+  //           type: "variable_if",
+  //           value: 1,
+  //         },
+  //       ],
+  //       from: {
+  //         key_code: "j",
+  //       },
+  //       to: [
+  //         {
+  //           key_code: "tab",
+  //           modifiers: ["left_command"],
+  //         },
+  //       ],
+  //       to_after_key_up: [
+  //         {
+  //           set_variable: {
+  //             name: "hyper",
+  //             value: 0
+  //           }
+  //         }
+  //       ],
+  //       type: "basic",
+  //     },
+  //   ],
+  // },
   ...createHyperSubLayers({
     // "a"pps
     o: {
       b: app("Brave Browser"),
       c: app("Google Calendar"),
-      e: app("Visual Studio Code"),
+      // e: app("Visual Studio Code"),
+      e: app("iTerm"),
       // s: app("Slack"),
       n: app("Notion"),
       t: app("iTerm"),
       z: app("zoom.us"),
       f: app("Finder"),
-      p: app("Spotify"),
+      s: app("Spotify"),
       m: app("Gmail"),
+      p: app("Vivaldi"),
     },
     // w = "Window"
     w: {
-      y: rectangle("previous-display"),
-      o: rectangle("next-display"),
+      // y: rectangle("previous-display"),
+      d: rectangle("next-display"),
       m: rectangle("maximize"),
       h: {
         description: "Window: Previous Tab",
@@ -157,7 +159,7 @@ const rules: KarabinerRules[] = [
           },
         ],
       },
-      u: {
+      i: {
         description: "Window: Back",
         to: [
           {
@@ -166,7 +168,7 @@ const rules: KarabinerRules[] = [
           },
         ],
       },
-      i: {
+      o: {
         description: "Window: Forward",
         to: [
           {
@@ -184,12 +186,57 @@ const rules: KarabinerRules[] = [
           },
         ],
       },
-      d: {
-        description: "Window: Next display",
+      p: {
+        description: "Window: Previous Window Same App",
+        to: [
+          {
+            key_code: "grave_accent_and_tilde",
+            modifiers: ["right_command", "shift"]
+          }
+        ]
+      },
+      f: {
+        description: "Window: Maximize Current Tab",
+        to: [
+          {
+            key_code: "return_or_enter",
+            modifiers: ["right_command", "shift"],
+          },
+        ],
+      },
+      right_arrow: {
+        description: "Pane: Incresize Size Right",
         to: [
           {
             key_code: "right_arrow",
-            modifiers: ["right_control", "right_option", "right_command"],
+            modifiers: ["right_command", "right_control"],
+          },
+        ],
+      },
+      left_arrow: {
+        description: "Pane: Increase Size Left",
+        to: [
+          {
+            key_code: "left_arrow",
+            modifiers: ["right_command", "right_control"]
+          },
+        ],
+      },
+      up_arrow: {
+        description: "Pane: Increase Size Up",
+        to: [
+          {
+            key_code: "up_arrow",
+            modifiers: ["right_command", "right_control"],
+          },
+        ],
+      },
+      down_arrow: {
+        description: "Pane: Increase Size Down",
+        to: [
+          {
+            key_code: "down_arrow",
+            modifiers: ["right_command", "right_control"],
           },
         ],
       },
